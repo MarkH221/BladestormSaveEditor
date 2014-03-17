@@ -1,0 +1,13 @@
+Bladestorm Save Editor
+===============
+
+Bladestorm Save Editor Revision 3.
+Using the .Net 4.5 framework with primary support for the xbox360 version game-saves.
+
+## Acknowledgements
+
+Thanks to 360Haven members for the following:
+Jappi88 & Pureiso	- Isolib.dll
+
+Thanks to users of Codeplex for the following:
+Xceed				- Extended WPF Toolkit
