@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="BladestormSE.SquadControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label x:Name="SquadName"
+               Height="26"
+               VerticalAlignment="Top"
+               Content="Label" />
+        <WrapPanel x:Name="LevelWrap"
+                   Grid.Row="1"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Orientation="Horizontal">
+            <Label HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Content="Level:" />
+            <xctk:IntegerUpDown x:Name="Levelbox"
+                                Width="75"
+                                Margin="2,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Minimum="0"
+                                ParsingNumberStyle="Integer"
+                                Value="0" />
+            <Button x:Name="Levelmaxbtn"
+                    Width="25"
+                    Height="20"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="MaxLevel"
+                    Content="99" />
+        </WrapPanel>
+        <WrapPanel x:Name="PointWrap"
+                   Grid.Row="2"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Orientation="Horizontal">
+            <Label HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Content="Points:" />
+            <xctk:IntegerUpDown x:Name="PointBox"
+                                Width="75"
+                                Margin="2,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Minimum="0"
+                                ParsingNumberStyle="Integer"
+                                Text="0" />
+            <Button x:Name="Pointmaxbtn"
+                    Width="25"
+                    Height="20"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="MaxPoints"
+                    Content="99k" />
+        </WrapPanel>
+    </Grid>
+</UserControl>

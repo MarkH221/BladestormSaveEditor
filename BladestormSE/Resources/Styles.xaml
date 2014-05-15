@@ -26,11 +26,11 @@
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Foreground" Value="Black" />
-                <Setter Property="Background" Value="White" />
+                <!--<Setter Property="Background" Value="White" />-->
             </Trigger>
             <Trigger Property="IsSelected" Value="False">
                 <Setter Property="Foreground" Value="White" />
-                <Setter Property="Background" Value="Black" />
+                <!--<Setter Property="Background" Value="Black" />-->
             </Trigger>
         </Style.Triggers>
     </Style>

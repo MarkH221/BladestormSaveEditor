@@ -1,15 +1,20 @@
-﻿using System.Windows;
-
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Media;
+using Isolib;
 namespace BladestormSE
 {
-    /// <summary>
-    ///     Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ExitButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
