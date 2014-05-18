@@ -9,7 +9,7 @@ namespace BladestormSE
     /// </summary>
     public partial class SquadControl : UserControl
     {
-        public int Points;
+        public int Points { get; set; }
 
         public SquadControl()
         {
@@ -34,12 +34,12 @@ namespace BladestormSE
                     );
             }
         }
-        private void MaxLevel(object sender, RoutedEventArgs e)
+        public void MaxLevel(object sender, RoutedEventArgs e)
         {
             Levelbox.Value = 99;
         }
 
-        private void MaxPoints(object sender, RoutedEventArgs e)
+        public void MaxPoints(object sender, RoutedEventArgs e)
         {
             PointBox.Value = 99999;
         }

@@ -22,8 +22,10 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.666" Value="0.4" />
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.35" />
                 <EasingDoubleKeyFrame KeyTime="0:0:1.334" Value="0.3" />
-                <EasingDoubleKeyFrame KeyTime="0:0:1.666" Value="0.25" />
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.2" />
+                <!--
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.666" Value="0.25" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.2" />
+                -->
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -32,306 +34,430 @@
             <BeginStoryboard Storyboard="{StaticResource PulseMesh}" />
         </EventTrigger>
     </Window.Triggers>
-    <Border x:Name="Border"
-            BorderBrush="Black"
-            BorderThickness="1"
-            CornerRadius="1">
-        <Grid x:Name="MasterGrid" Margin="0,0,0,0">
-            <Image x:Name="BG"
-                   Margin="1,1,-1,-1"
-                   VerticalAlignment="Top"
-                   Source="Resources/Images/BG.png"
-                   Stretch="Fill" />
-            <Image x:Name="Mesh"
-                   VerticalAlignment="Top"
-                   Opacity="0.5"
-                   Source="Resources\Images\mesh.jpg"
-                   Stretch="Fill" />
-            <TabControl x:Name="MasterTab"
-                        Height="186"
-                        Margin="10,84,10,0"
-                        VerticalAlignment="Top"
-                        VerticalContentAlignment="Center"
-                        Background="{x:Null}">
-                <TabItem Header="Squad Set 1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <bladestormSe:SquadControl HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="1"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="0"
-                                                   Grid.Column="1"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="0"
-                                                   Grid.Column="2"
-                                                   Margin="0.5,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="2"
-                                                   Margin="0.5,0,1.5,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Squad Set 2">
-                    <Grid Width="456" Height="154">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <bladestormSe:SquadControl HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="1"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="0"
-                                                   Grid.Column="1"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="0"
-                                                   Grid.Column="2"
-                                                   Margin="0.5,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="2"
-                                                   Margin="0.5,0,1.5,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Squad Set 3">
-                    <Grid Width="456" Height="154">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <bladestormSe:SquadControl HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="1"
-                                                   Grid.Column="1"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="0"
-                                                   Grid.Column="1"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                        <bladestormSe:SquadControl Grid.Row="0"
-                                                   Grid.Column="2"
-                                                   Margin="0.5,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   Squad="Sword" />
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Inventory">
-                    <Grid>
-                        <CheckBox Margin="51,24,0,0"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Top"
-                                  Content="CheckBox"
-                                  Foreground="White" />
-                        <CheckBox Margin="51,40,0,0"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Top"
-                                  Content="CheckBox"
-                                  Foreground="White" />
-                        <CheckBox Margin="51,56,0,0"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Top"
-                                  Content="CheckBox"
-                                  Foreground="White" />
-                        <CheckBox Margin="51,88,0,0"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Top"
-                                  Content="CheckBox"
-                                  Foreground="White" />
-                        <CheckBox Margin="51,72,0,0"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Top"
-                                  Content="CheckBox"
-                                  Foreground="White" />
-                    </Grid>
-                </TabItem>
-            </TabControl>
-            <Button x:Name="ExitButton"
-                    Width="44"
-                    Margin="0,10,10,0"
-                    HorizontalAlignment="Right"
+    <Grid x:Name="MasterGrid" Margin="0,0,0,0">
+        <Image x:Name="BG"
+               VerticalAlignment="Top"
+               Source="Resources/Images/BG2.png"
+               Stretch="Fill" />
+        <Image x:Name="Mesh"
+               VerticalAlignment="Top"
+               Opacity="0.5"
+               Source="Resources\Images\mesh.jpg"
+               Stretch="Fill" />
+        <TabControl x:Name="MasterTab"
+                    Height="186"
+                    Margin="10,84,10,0"
                     VerticalAlignment="Top"
-                    Click="ExitButtonClick"
-                    Content="Exit" />
+                    VerticalContentAlignment="Center"
+                    Background="{x:Null}">
+            <TabItem Header="Squad Set 1">
+                <Grid x:Name="Squads1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <bladestormSe:SquadControl x:Name="knives"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Knives" />
+                    <bladestormSe:SquadControl x:Name="spears"
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Spears" />
+                    <bladestormSe:SquadControl x:Name="longspears"
+                                               Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Long Spears" />
+                    <bladestormSe:SquadControl x:Name="rapiers"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Rapiers" />
+                    <bladestormSe:SquadControl x:Name="swords"
+                                               Grid.Row="0"
+                                               Grid.Column="2"
+                                               Margin="0.5,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Swords" />
+                    <bladestormSe:SquadControl x:Name="horses"
+                                               Grid.Row="1"
+                                               Grid.Column="2"
+                                               Margin="0.5,0,1.5,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Horses" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Squad Set 2">
+                <Grid x:Name="Squads2"
+                      Width="456"
+                      Height="154">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <bladestormSe:SquadControl x:Name="halberds"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Halberds" />
+                    <bladestormSe:SquadControl x:Name="bows"
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Bows" />
+                    <bladestormSe:SquadControl x:Name="horsebows"
+                                               Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="HorseBows" />
+                    <bladestormSe:SquadControl x:Name="axes"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Axes" />
+                    <bladestormSe:SquadControl x:Name="clubs"
+                                               Grid.Row="0"
+                                               Grid.Column="2"
+                                               Margin="0.5,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Clubs" />
+                    <bladestormSe:SquadControl x:Name="camels"
+                                               Grid.Row="1"
+                                               Grid.Column="2"
+                                               Margin="0.5,0,1.5,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Camels" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Squad Set 3">
+                <Grid x:Name="Squads3"
+                      Width="456"
+                      Height="154">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <bladestormSe:SquadControl x:Name="elephants"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Elephants" />
+                    <bladestormSe:SquadControl x:Name="magic"
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Magic" />
+                    <bladestormSe:SquadControl x:Name="engineers"
+                                               Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Engineers" />
+                    <bladestormSe:SquadControl x:Name="chariots"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Chariots" />
+                    <bladestormSe:SquadControl x:Name="explosives"
+                                               Grid.Row="0"
+                                               Grid.Column="2"
+                                               Margin="0.5,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Squad="Explosives" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Inventory">
+                <Grid>
+                    <WrapPanel x:Name="checkwrap"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Orientation="Vertical">
+                        <CheckBox x:Name="weapons"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Content="99 all Weapons / Shields"
+                                  Foreground="White" />
+                        <CheckBox x:Name="headgear"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Content="99 All Headgear"
+                                  Foreground="White" />
+                        <CheckBox x:Name="bodywear"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Content="99 All Bodywear"
+                                  Foreground="White" />
+                        <CheckBox x:Name="armwear"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Content="99 All Armwear"
+                                  Foreground="White" />
+                        <CheckBox x:Name="legwear"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Content="99 All Legwear"
+                                  Foreground="White" />
+                        <CheckBox x:Name="pennon"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Content="99 All Pennon (Flags)"
+                                  Foreground="White" />
+                        <Button x:Name="allcheck"
+                                Margin="0,5,0,0"
+                                Content="Toggle All" />
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Width="57"
+                     Height="20"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Header="Save IDs">
+                <Grid Margin="0,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Content="Content:" />
+                    <TextBox Grid.Column="1"
+                             VerticalAlignment="Center"
+                             IsReadOnly="True"
+                             TextWrapping="Wrap" />
+                    <Label Grid.Row="1"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Content="Game ID:" />
+                    <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             VerticalAlignment="Center"
+                             IsReadOnly="True"
+                             TextWrapping="Wrap" />
+                    <Label Grid.Row="2"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Content="Profile ID:" />
+                    <TextBox Grid.Row="2"
+                             Grid.Column="1"
+                             VerticalAlignment="Center"
+                             TextWrapping="Wrap" />
+                    <Label Grid.Row="3"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Content="Console ID:" />
+                    <TextBox Grid.Row="3"
+                             Grid.Column="1"
+                             VerticalAlignment="Center"
+                             TextWrapping="Wrap" />
+                    <Label Grid.Row="4"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           HorizontalContentAlignment="Right"
+                           Content="Device ID:" />
+                    <TextBox Grid.Row="4"
+                             Grid.Column="1"
+                             VerticalAlignment="Center"
+                             TextWrapping="Wrap" />
+                    <WrapPanel Grid.Row="5"
+                               Grid.Column="1"
+                               Orientation="Horizontal">
+                        <Button x:Name="nullidbtn"
+                                Width="75"
+                                Height="22"
+                                HorizontalAlignment="Left"
+                                Content="Anonymize" />
+                        <Button x:Name="restoreidbtn"
+                                Width="75"
+                                Height="22"
+                                Margin="2,0"
+                                HorizontalAlignment="Left"
+                                Content="Revert" />
+                        <Button x:Name="transferidbtn"
+                                Width="75"
+                                Height="22"
+                                HorizontalAlignment="Left"
+                                Content="Transfer" />
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel x:Name="iopanel"
+                    Margin="10,10,10,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
             <Button x:Name="OpenButton"
                     Width="44"
-                    Margin="10,10,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Open" />
             <Button x:Name="SaveButton"
                     Width="44"
-                    Margin="59,10,0,0"
+                    Margin="5,0,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Save" />
-            <Label x:Name="Status"
-                   Margin="10,275,10,0"
+            <Button x:Name="ExitButton"
+                    Width="44"
+                    Margin="325,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Center"
+                    Click="ExitButtonClick"
+                    Content="Exit" />
+        </StackPanel>
+        <Label x:Name="Status"
+               Margin="10,275,10,0"
+               VerticalAlignment="Top"
+               Content="Status: "
+               Foreground="White"
+               ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+        <WrapPanel x:Name="NameWrap"
+                   Margin="10,53,0,0"
+                   HorizontalAlignment="Left"
                    VerticalAlignment="Top"
-                   Content="Status: "
-                   Foreground="White"
-                   ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-            <WrapPanel x:Name="NameWrap"
-                       Margin="10,53,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Orientation="Horizontal">
-                <Label HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Content="Name:"
-                       d:IsLocked="True" />
-                <TextBox x:Name="NameBox"
-                         Width="120"
-                         Height="23"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center"
-                         TextWrapping="Wrap"
-                         d:IsLocked="True" />
-            </WrapPanel>
-            <WrapPanel x:Name="MoneyWrap"
-                       Width="217"
-                       Height="26"
-                       Margin="179,53,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Orientation="Horizontal">
-                <Label HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       HorizontalContentAlignment="Center"
-                       Content="Money:"
-                       d:IsLocked="True" />
-                <xctk:IntegerUpDown x:Name="MoneyBox"
-                                    Width="120"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Center"
-                                    Minimum="0"
-                                    TextAlignment="Right"
-                                    d:IsLocked="True"
-                                    Value="0" />
-                <Button Width="44"
-                        Height="20"
-                        Margin="3,0,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        Content="Lots"
-                        Padding="1" />
-            </WrapPanel>
-            <WrapPanel x:Name="MaxPanel"
-                       Margin="399,55,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Orientation="Vertical">
-                <Button x:Name="MaxLevelBtn"
-                        Width="75"
-                        Height="22"
-                        Margin="0,0,0,1"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Content="Level 99" />
-                <Button x:Name="MaxPointsBtn"
-                        Width="75"
-                        Height="22"
-                        Margin="0,2,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Content="99k Points" />
-            </WrapPanel>
-        </Grid>
-    </Border>
+                   Orientation="Horizontal">
+            <Label HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Name:"
+                   d:IsLocked="True" />
+            <TextBox x:Name="NameBox"
+                     Width="120"
+                     Height="23"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     TextWrapping="Wrap" />
+        </WrapPanel>
+        <WrapPanel x:Name="MoneyWrap"
+                   Width="217"
+                   Height="26"
+                   Margin="179,53,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Orientation="Horizontal">
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Content="Money:"
+                   d:IsLocked="True" />
+            <xctk:IntegerUpDown x:Name="MoneyBox"
+                                Width="120"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Minimum="0"
+                                TextAlignment="Right"
+                                d:IsLocked="True"
+                                Value="0" />
+            <Button x:Name="MaxMoneyBtn"
+                    Width="44"
+                    Height="20"
+                    Margin="3,0,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Click="MaxMoneyClick"
+                    Content="Lots"
+                    Padding="1" />
+        </WrapPanel>
+        <WrapPanel x:Name="MaxPanel"
+                   Margin="398,32,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Orientation="Vertical">
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="All Squads" />
+            <Button x:Name="MaxLevelBtn"
+                    Width="75"
+                    Height="22"
+                    Margin="0,0,0,1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="MaxLevelBtnClick"
+                    Content="Level 99" />
+            <Button x:Name="MaxPointsBtn"
+                    Width="75"
+                    Height="22"
+                    Margin="0,2,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="MaxPointsBtnClick"
+                    Content="99k Points" />
+        </WrapPanel>
+    </Grid>
 </Window>

@@ -30,7 +30,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
@@ -145,25 +145,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Arm.png" />
-    <Resource Include="Resources\Images\Armi.png" />
     <Resource Include="Resources\Images\BG.png" />
-    <Resource Include="Resources\Images\Book2.png" />
-    <Resource Include="Resources\Images\Book2i.png" />
-    <Resource Include="Resources\Images\Flag2.png" />
-    <Resource Include="Resources\Images\Flag2i.png" />
-    <Resource Include="Resources\Images\Helm.png" />
-    <Resource Include="Resources\Images\Helmi.png" />
-    <Resource Include="Resources\Images\Image1.png" />
-    <Resource Include="Resources\Images\Image1_backup.png" />
-    <Resource Include="Resources\Images\Leg.png" />
-    <Resource Include="Resources\Images\Legi.png" />
-    <Resource Include="Resources\Images\logo.png" />
     <Resource Include="Resources\Images\mesh.jpg" />
-    <Resource Include="Resources\Images\Plate.png" />
-    <Resource Include="Resources\Images\Platei.png" />
-    <Resource Include="Resources\Images\SwordShield.png" />
-    <Resource Include="Resources\Images\SwordShieldi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\BG2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
