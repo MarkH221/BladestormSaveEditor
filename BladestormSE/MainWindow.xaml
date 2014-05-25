@@ -66,7 +66,8 @@
                                                VerticalAlignment="Center"
                                                HorizontalContentAlignment="Center"
                                                VerticalContentAlignment="Center"
-                                               Squad="Knives" />
+                                               Squad="Knives"
+                                               ToolTip="The best squad at level 99, swift and deadly." />
                     <bladestormSe:SquadControl x:Name="spears"
                                                Grid.Row="1"
                                                Grid.Column="0"
@@ -229,7 +230,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Inventory">
-                <Grid>
+                <Grid x:Name="InventoryGrid">
                     <WrapPanel x:Name="checkwrap"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -266,6 +267,7 @@
                                   Foreground="White" />
                         <Button x:Name="allcheck"
                                 Margin="0,5,0,0"
+                                Click="AllcheckClick"
                                 Content="Toggle All" />
                     </WrapPanel>
                 </Grid>
@@ -275,7 +277,7 @@
                      HorizontalAlignment="Left"
                      VerticalAlignment="Top"
                      Header="Save IDs">
-                <Grid Margin="0,0,10,0">
+                <Grid x:Name="IdGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
@@ -292,26 +294,32 @@
                            VerticalAlignment="Top"
                            HorizontalContentAlignment="Right"
                            Content="Content:" />
-                    <TextBox Grid.Column="1"
+                    <TextBox x:Name="ContentBox"
+                             Grid.Row="0"
+                             Grid.Column="1"
                              VerticalAlignment="Center"
                              IsReadOnly="True"
                              TextWrapping="Wrap" />
                     <Label Grid.Row="1"
+                           Grid.Column="0"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Top"
                            HorizontalContentAlignment="Right"
                            Content="Game ID:" />
-                    <TextBox Grid.Row="1"
+                    <TextBox x:Name="GID"
+                             Grid.Row="1"
                              Grid.Column="1"
                              VerticalAlignment="Center"
                              IsReadOnly="True"
                              TextWrapping="Wrap" />
                     <Label Grid.Row="2"
+                           Grid.Column="0"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Top"
                            HorizontalContentAlignment="Right"
                            Content="Profile ID:" />
-                    <TextBox Grid.Row="2"
+                    <TextBox x:Name="PID"
+                             Grid.Row="2"
                              Grid.Column="1"
                              VerticalAlignment="Center"
                              TextWrapping="Wrap" />
@@ -320,7 +328,8 @@
                            VerticalAlignment="Top"
                            HorizontalContentAlignment="Right"
                            Content="Console ID:" />
-                    <TextBox Grid.Row="3"
+                    <TextBox x:Name="CID"
+                             Grid.Row="3"
                              Grid.Column="1"
                              VerticalAlignment="Center"
                              TextWrapping="Wrap" />
@@ -329,7 +338,8 @@
                            VerticalAlignment="Top"
                            HorizontalContentAlignment="Right"
                            Content="Device ID:" />
-                    <TextBox Grid.Row="4"
+                    <TextBox x:Name="DID"
+                             Grid.Row="4"
                              Grid.Column="1"
                              VerticalAlignment="Center"
                              TextWrapping="Wrap" />
@@ -340,18 +350,24 @@
                                 Width="75"
                                 Height="22"
                                 HorizontalAlignment="Left"
-                                Content="Anonymize" />
+                                Click="NullidbtnClick"
+                                Content="Anonymize"
+                                ToolTip="Zero out ids for safe sharing online." />
                         <Button x:Name="restoreidbtn"
                                 Width="75"
                                 Height="22"
                                 Margin="2,0"
                                 HorizontalAlignment="Left"
-                                Content="Revert" />
+                                Click="RestoreidbtnClick"
+                                Content="Revert"
+                                ToolTip="Restore ids to their original values at loadup." />
                         <Button x:Name="transferidbtn"
                                 Width="75"
                                 Height="22"
                                 HorizontalAlignment="Left"
-                                Content="Transfer" />
+                                Click="TransferidbtnClick"
+                                Content="Transfer"
+                                ToolTip="Transfer save to a new profile." />
                     </WrapPanel>
                 </Grid>
             </TabItem>
@@ -364,13 +380,16 @@
                     Width="44"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Content="Open" />
+                    Click="OpenButton_Click"
+                    Content="Open"
+                    ToolTip="Open a gamesave" />
             <Button x:Name="SaveButton"
                     Width="44"
                     Margin="5,0,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Content="Save" />
+                    Content="Save"
+                    ToolTip="Save gamesave." />
             <Button x:Name="ExitButton"
                     Width="44"
                     Margin="325,0,0,0"
@@ -378,9 +397,10 @@
                     VerticalAlignment="Top"
                     HorizontalContentAlignment="Center"
                     Click="ExitButtonClick"
-                    Content="Exit" />
+                    Content="Exit"
+                    ToolTip="Close editor" />
         </StackPanel>
-        <Label x:Name="Status"
+        <Label x:Name="status"
                Margin="10,275,10,0"
                VerticalAlignment="Top"
                Content="Status: "
@@ -393,9 +413,8 @@
                    Orientation="Horizontal">
             <Label HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Content="Name:"
-                   d:IsLocked="True" />
-            <TextBox x:Name="NameBox"
+                   Content="Name:" />
+            <TextBox x:Name="CharName"
                      Width="120"
                      Height="23"
                      HorizontalAlignment="Left"
@@ -412,8 +431,7 @@
             <Label HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    HorizontalContentAlignment="Center"
-                   Content="Money:"
-                   d:IsLocked="True" />
+                   Content="Money:" />
             <xctk:IntegerUpDown x:Name="MoneyBox"
                                 Width="120"
                                 HorizontalAlignment="Center"
@@ -421,7 +439,6 @@
                                 HorizontalContentAlignment="Center"
                                 Minimum="0"
                                 TextAlignment="Right"
-                                d:IsLocked="True"
                                 Value="0" />
             <Button x:Name="MaxMoneyBtn"
                     Width="44"
@@ -432,7 +449,8 @@
                     HorizontalContentAlignment="Center"
                     Click="MaxMoneyClick"
                     Content="Lots"
-                    Padding="1" />
+                    Padding="1"
+                    ToolTip="More than enough dosh." />
         </WrapPanel>
         <WrapPanel x:Name="MaxPanel"
                    Margin="398,32,0,0"
@@ -449,7 +467,8 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Click="MaxLevelBtnClick"
-                    Content="Level 99" />
+                    Content="Level 99"
+                    ToolTip="All squads level 99" />
             <Button x:Name="MaxPointsBtn"
                     Width="75"
                     Height="22"
@@ -457,7 +476,17 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Click="MaxPointsBtnClick"
-                    Content="99k Points" />
+                    Content="99k Points"
+                    ToolTip="All squads 99k points." />
         </WrapPanel>
+        <ComboBox x:Name="SaveSlot"
+                  Width="120"
+                  Margin="155,10,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top" />
+        <Label Margin="117,10,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Slot:" />
     </Grid>
 </Window>

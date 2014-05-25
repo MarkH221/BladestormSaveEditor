@@ -7,7 +7,7 @@ namespace BladestormSE
     /// <summary>
     /// Interaction logic for SquadControl.xaml
     /// </summary>
-    public partial class SquadControl : UserControl
+    public partial class SquadControl
     {
         public int Points { get; set; }
 
