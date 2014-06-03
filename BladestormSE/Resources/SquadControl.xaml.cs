@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace BladestormSE
 {
@@ -19,7 +17,7 @@ namespace BladestormSE
         public int Level
         {
             get { return (int)Levelbox.Value; }
-            set { Levelbox.Dispatcher.Invoke(new Action(delegate { Levelbox.Value = value; })); }
+            set { Levelbox.Dispatcher.Invoke(delegate { Levelbox.Value = value; }); }
         }
 
         public string Squad
@@ -27,13 +25,14 @@ namespace BladestormSE
             get { return SquadName.Content as string; }
             set
             {
-                SquadName.Dispatcher.Invoke(new Action(delegate
-                                                       {
-                                                           SquadName.Content = value;
-                                                       })
+                SquadName.Dispatcher.Invoke(delegate
+                                            {
+                                                SquadName.Content = value;
+                                            }
                     );
             }
         }
+
         public void MaxLevel(object sender, RoutedEventArgs e)
         {
             Levelbox.Value = 99;

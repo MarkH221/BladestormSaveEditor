@@ -1,13 +1,17 @@
-﻿using System.Windows.Threading;
+﻿using System.Windows.Data;
+using BladestormSE.Resources;
 using Isolib.IOPackage;
 using Isolib.STFSPackage;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace BladestormSE
 {
@@ -19,6 +23,7 @@ namespace BladestormSE
         private Stfs _stfs;
         private byte[] buffer;
         private long _offset;
+        private List<Slot> Slot = new List<Slot>();
 
         #endregion Variables
 
@@ -29,7 +34,7 @@ namespace BladestormSE
 
         #region Input
 
-        private void OpenFile()
+        private async void OpenFile()
         {
             try
             {
@@ -45,12 +50,12 @@ namespace BladestormSE
                     return;
                     //abort load
                 }
-                SetStatus(("Reading: " + open.SafeFileName));
+                SetStatus(("Reading " + open.SafeFileName));
 
                 _stfs = new Stfs(_filepath);
                 buffer = _stfs.Extract(0);
-                Task.Factory.StartNew(ReadFile);
-                Task.Factory.StartNew(ReadID);
+                ReadID();
+                ReadFile();
                 SetStatus("Loaded!");
             }
             catch (Exception e)
@@ -58,6 +63,7 @@ namespace BladestormSE
                 MessageBox.Show(e.ToString());
             }
         }
+
         private void ReadFile()
         {
             int[] offsets =
@@ -74,9 +80,10 @@ namespace BladestormSE
                 //First We determine used slots.
                 for (var i = 0; i < 30; i++)
                 {
+                    SetStatus("Scanning Slot#" + (i + 1).ToString(CultureInfo.InvariantCulture));
                     //Get Locale/Used Slot
-                    reader.Position = offsets[0];
-                    string storage = (reader.ReadString(StringType.Ascii, 16));
+                    reader.Position = offsets[0] + (128 * i);
+                    var storage = (reader.ReadString(StringType.Ascii, 16));
                     storage = storage.Trim(Convert.ToChar("\0"));
                     if (storage == "NODATA")
                     {
@@ -84,57 +91,79 @@ namespace BladestormSE
                         usedslots[i] = false;
                         //add it to the list.
                         constructor.Append(storage);
-                        return;
+                        SaveSlot.Dispatcher.Invoke(new Action(() => SaveSlot.Items.Add(constructor.ToString())));
+                        Slot.Add(new Slot { SlotString = constructor.ToString(), StartingOffset = 0x44 + (0x79400 * (i + 1)) });
+                        constructor.Clear();
+                        continue;
                     }
                     usedslots[i] = true;
                     constructor.Append(storage);
+                    //Get Time & Name
+                    for (var o = 1; o < 3; o++)
+                    {
+                        constructor.Append(", ");
+                        reader.Position = offsets[o] + (128 * i);
+                        storage = (reader.ReadString(StringType.Ascii, 16));
+                        storage = storage.Trim(Convert.ToChar("\0"));
+                        constructor.Append(storage);  
+                    }
+                    ////Get Time
+                    //constructor.Append(", ");
+                    //reader.Position = offsets[1] + (128 * i);
+                    //storage = (reader.ReadString(StringType.Ascii, 16));
+                    //storage = storage.Trim(Convert.ToChar("\0"));
+                    //constructor.Append(storage);
 
-                    //Get Time
-                    constructor.Append(", ");
-                    reader.Position = offsets[1];
-                    storage = (reader.ReadString(StringType.Ascii, 16));
-                    storage = storage.Trim(Convert.ToChar("\0"));
-                    constructor.Append(storage);
-                    //Get Name
-                    constructor.Append(", ");
-                    reader.Position = offsets[2];
-                    storage = (reader.ReadString(StringType.Ascii, 16));
-                    storage = storage.Trim(Convert.ToChar("\0"));
-                    constructor.Append(storage);
-                    //now containts TAVERN, [TIME], Character Name
-                     SaveSlot.Dispatcher.Invoke(new Action(() => SaveSlot.Items.Add(constructor.ToString())));
-               constructor.Clear();
-                    //refreshes constructor for next loop trip
-                    offsets[0] += 128;
-                    offsets[1] += 128;
-                    offsets[2] += 128;
+                    ////Get Name
+                    //constructor.Append(", ");
+                    //reader.Position = offsets[2] + (128 * i);
+                    //storage = (reader.ReadString(StringType.Ascii, 16));
+                    //storage = storage.Trim(Convert.ToChar("\0"));
+                    //constructor.Append(storage);
+
+                    //Build List
+                    SaveSlot.Items.Add(constructor.ToString());
+                    Slot.Add(new Slot { SlotString = constructor.ToString(), StartingOffset = 0x44 + (0x79400 * (i + 1)) });
+                    constructor.Clear();
                 }
                 //TODO Check for empty save, message and return if so
 
                 //End Read Slots
-                SaveSlot.Dispatcher.Invoke(new Action(delegate { SaveSlot.SelectedIndex = 0; }));
-                
-                // sets the combobox up nicely otherwise it leaves a gap.
-                SetStatus("Please Select A Valid Save Slot.");
-            Retry:
-                if (SaveSlot.SelectedItem.ToString().Contains("NODATA"))
-                {
-                    goto Retry;
-                }
+                //SaveSlot.Items.Clear();
+                SaveSlot.SelectedIndex = 0;
+
+                SetStatus("Reading Slot# " + SaveSlot.SelectedIndex + 1);
+
                 _offset = (0x44 + (0x79400 * SaveSlot.SelectedIndex));
                 try
                 {
-                    //name
+                    //Name
+                    SetStatus("Reading Name");
                     reader.Position = _offset + 4;
-                    //offset is now based upon chosen save slot
-                    CharName.Text = reader.ReadString(StringType.Ascii, 16);
-                    CharName.Text = CharName.Text.Trim(Convert.ToChar(""));
+                    Slot[SaveSlot.SelectedIndex].Name = reader.ReadString(StringType.Ascii, 16).Trim(Convert.ToChar("\0"));
+                    // Slot[SaveSlot.SelectedIndex].Name = CharName.Text = reader.ReadString(StringType.Ascii, 16).Trim(Convert.ToChar("\0"));
+                    
+                    //Money
+                    SetStatus("Reading Money");
+                    reader.Position = _offset + 64;
+                    Slot[SaveSlot.SelectedIndex].Money = MoneyBox.Value = reader.ReadInt32();
 
-                    //Readoffsets(MoneyBox, 64, 4);
-                    //Readoffsets(knivelevelbox, 842, 2);
-                    //Readoffsets(knivepointbox, 848, 4);
-                    //Readoffsets(rapierlevelbox, 926, 2);
-                    //Readoffsets(rapierpointbox, 932, 4);
+                    //Knives
+                    SetStatus("Reading Knives Level");
+                    reader.Position = _offset + 842;
+                    Slot[SaveSlot.SelectedIndex].Knivelv = reader.ReadUInt16();
+                    SetStatus("Reading Knives Points");
+                    reader.Position = _offset + 848;
+                    Slot[SaveSlot.SelectedIndex].Knivepoint = reader.ReadInt32();
+
+                    //Rapier
+                    SetStatus("Reading Rapier Level");
+                    reader.Position = _offset + 926;
+                    Slot[SaveSlot.SelectedIndex].Rapierlv = reader.ReadUInt16();
+                    SetStatus("Reading Rapier Points");
+                    reader.Position = _offset + 932;
+                    Slot[SaveSlot.SelectedIndex].Rapierpoint = reader.ReadUInt32();
+
                     //Readoffsets(swordlevelbox, 1010, 2);
                     //Readoffsets(swordpointbox, 1016, 4);
                     //Readoffsets(spearlevelbox, 1094, 2);
@@ -165,33 +194,54 @@ namespace BladestormSE
                     //Readoffsets(magicpointbox, 2108, 4);
                     //Readoffsets(engineerlevelbox, 2186, 2);
                     //Readoffsets(engineerpointbox, 2192, 4);
+                    LoadSlot(null, null);
+                    SaveSlot.SelectionChanged += LoadSlot;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    SetStatus("ERROR!");
+                    return;
                 }
                 SetStatus("Loaded!");
                 reader.Flush();
             }
         }
 
+        private void LoadSlot(object sender, SelectionChangedEventArgs e)
+        {
+            //Save
+            Slot[SaveSlot.SelectedIndex].Name = CharName.Text;
+            Slot[SaveSlot.SelectedIndex].Money = MoneyBox.Value;
+            Slot[SaveSlot.SelectedIndex].Knivelv = knives.Levelbox.Value;
+            Slot[SaveSlot.SelectedIndex].Knivepoint = knives.PointBox.Value;
+            //Load
+            CharName.Text = Slot[SaveSlot.SelectedIndex].Name;
+            MoneyBox.Text = Slot[SaveSlot.SelectedIndex].Money.ToString();
+            knives.Levelbox.Value = Slot[SaveSlot.SelectedIndex].Knivelv;
+            knives.PointBox.Value = Slot[SaveSlot.SelectedIndex].Knivepoint;
+        }
+
         public void ReadID()
         {
-            //Profile ID
-            PID.Text = _stfs.HeaderData.ProfileID;
+           //Profile ID
+            PID.Dispatcher.Invoke(new Action(() => PID.Text = _stfs.HeaderData.ProfileID));
+
             //Console ID
-            CID.Text = _stfs.HeaderData.ConsoleID;
-            //Title ID
-            GID.Text = _stfs.HeaderData.TitleID.Substring(8);
-            //Smallbug if not substringed
+            CID.Dispatcher.Invoke(new Action(() => CID.Text = _stfs.HeaderData.ConsoleID));
+
+            //Title ID - Smallbug if not substringed
+            GID.Dispatcher.Invoke(new Action(() => GID.Text = _stfs.HeaderData.TitleID.Substring(8)));
+
             //Device ID
-            DID.Text = _stfs.HeaderData.DeviceID;
+            DID.Dispatcher.Invoke(new Action(() => DID.Text = _stfs.HeaderData.DeviceID));
+
             //Save Name
-            ContentBox.Text = _stfs.HeaderData.DisplayName;
+            ContentBox.Dispatcher.Invoke(new Action(() => ContentBox.Text = _stfs.HeaderData.DisplayName));
         }
 
         #endregion Input
-
+        
         #region Output
 
         #endregion Output
@@ -252,7 +302,7 @@ namespace BladestormSE
             }
         }
 
-        #region id management
+        #region ID Management
 
         private void NullidbtnClick(object sender, RoutedEventArgs e)
         {
@@ -270,23 +320,31 @@ namespace BladestormSE
         {
         }
 
-        #endregion id management
+        #endregion
 
         private void SetStatus(string text)
         {
-            if (status.Dispatcher.CheckAccess()) //statusstrip control has invoke, status does not.
+            if (status.Dispatcher.CheckAccess())
                 status.Content = ("Status: " + text);
             else
             {
-                status.Dispatcher.Invoke(new Action(delegate { status.Content = ("Status: " + text); }));
+                status.Dispatcher.Invoke(delegate { status.Content = ("Status: " + text); });
             }
         }
 
         #endregion Utilities
 
-        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        //protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        //{
+        //    base.OnMouseLeftButtonDown(e);
+
+        //    // Begin dragging the window
+        //    DragMove();
+        //}
+
+        private void OpenButtonClick(object sender, RoutedEventArgs e)
         {
-            Task.Factory.StartNew(OpenFile);
+            OpenFile();
         }
     }
 }
