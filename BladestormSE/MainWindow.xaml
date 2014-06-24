@@ -221,7 +221,6 @@
                     <bladestormSe:SquadControl x:Name="explosives"
                                                Grid.Row="0"
                                                Grid.Column="2"
-                                               Margin="0.5,0"
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                HorizontalContentAlignment="Center"
@@ -424,7 +423,11 @@
                      Height="23"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
-                     TextWrapping="Wrap" TextAlignment="Left" MaxLength="16" IsManipulationEnabled="True" Focusable="True" />
+                     Focusable="True"
+                     IsManipulationEnabled="True"
+                     MaxLength="16"
+                     TextAlignment="Left"
+                     TextWrapping="Wrap" />
         </WrapPanel>
         <WrapPanel x:Name="MoneyWrap"
                    Width="217"

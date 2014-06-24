@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using BladestormSE.Resources;
 
 namespace BladestormSE
 {
@@ -8,6 +9,13 @@ namespace BladestormSE
     public partial class SquadControl
     {
         public int Points { get; set; }
+
+        public SquadControl(Squad squad)
+        {
+            InitializeComponent();
+            Levelbox.DataContext = squad.Level;
+            PointBox.DataContext = squad.Points;
+        }
 
         public SquadControl()
         {

@@ -2,9 +2,27 @@
 
 namespace BladestormSE.Resources
 {
-    internal class Slot
+    public class Squad : Utilities.NotificationObject
+    {
+        private int level, points;
+        public int Level
+        {
+            get { return level; }
+            set { level = value; RaisePropertyChanged(() => Level); }
+        }
+        public int Points
+        {
+            get { return points; }
+            set { points = value; RaisePropertyChanged(() => Points); }
+        }
+        public long Adjust;
+    }
+
+    public class Slot : Utilities.NotificationObject 
     {
         public bool Used;
+        public Squad Knives = new Squad();
+        public Squad Rapier = new Squad();
         public UInt32 Bowlv;
 
         public UInt32 Bowpoint;
@@ -42,8 +60,18 @@ namespace BladestormSE.Resources
         public UInt32 Magiclv,
             Magicpoint;
 
-        public int? Money;
-        public string Name,SlotString;
+        private int money;
+        public int Money
+        {
+            get { return money; }
+            set
+            {
+                money = value;
+                RaisePropertyChanged(() => Money);
+            }
+        }
+
+        public string Name, SlotString;
 
         public UInt32 Rapierlv,
             Rapierpoint;
@@ -57,5 +85,7 @@ namespace BladestormSE.Resources
 
         public UInt32 Swordlv,
             Swordpoint;
+       
+
     }
 }
