@@ -5,9 +5,9 @@ namespace BladestormSE.Resources
 {
     public class Squad
     {
+        public long Adjust;
         public int Level;
         public int Points;
-        public long Adjust;
     }
 
     public enum Squaddies
@@ -33,6 +33,69 @@ namespace BladestormSE.Resources
 
     public class Slot
     {
+        public Squad Axes;
+
+        public UInt32 Bowlv;
+
+        public UInt32 Bowpoint;
+        public Squad Bows;
+
+        public UInt32 Camellv,
+            Camelpoint;
+
+        public Squad Camels;
+
+        public UInt32 Chariotlv,
+            Chariotpoint;
+
+        public Squad Chariots;
+
+        public UInt32 Clublv;
+        public UInt32 Clubpoint;
+        public Squad Clubs;
+
+        public UInt32 Elephantlv,
+            Elephantpoint;
+
+        public Squad Elephants;
+        public Squad Engineers;
+
+        public UInt32 Explosivelv;
+
+        public UInt32 Explosivepoint;
+        public Squad Explosives;
+        public UInt32 Halberdlv;
+        public UInt32 Halberdpoint;
+        public Squad Halberds;
+        public Squad HorseBows;
+        public UInt32 Horsebowlv;
+        public UInt32 Horsebowpoint;
+        public Squad Horses;
+
+        public UInt32 Horseslv,
+            Horsespoint;
+
+        public int ID;
+        public Squad Knives;
+        public Squad LongSpears;
+        public Squad Magic;
+
+        public UInt32 Magiclv,
+            Magicpoint;
+
+        public int Money;
+
+        public string Name;
+        public Squad Rapier;
+        public string SlotString;
+
+        public bool Slotedited;
+        public Squad Spears;
+        public List<Squad> Squads;
+
+        public long StartingOffset;
+        public Squad Swords;
+
         public Slot()
         {
             Squads.Add(Knives = new Squad { Adjust = 842 });
@@ -53,47 +116,5 @@ namespace BladestormSE.Resources
             Squads.Add(Magic = new Squad { Adjust = 2102 });
             Squads.Add(Engineers = new Squad { Adjust = 2186 });
         }
-
-        public List<Squad> Squads;
-        public Squad Knives, Rapier, Swords, Spears, LongSpears, Horses, Halberds, Axes, Clubs, Bows, HorseBows, Camels, Elephants, Chariots, Explosives, Magic, Engineers;
-        public int ID;
-
-        public UInt32 Bowlv;
-
-        public UInt32 Bowpoint;
-
-        public UInt32 Camellv,
-            Camelpoint;
-
-        public UInt32 Chariotlv,
-            Chariotpoint;
-
-        public UInt32 Clublv;
-        public UInt32 Clubpoint;
-
-        public UInt32 Elephantlv,
-            Elephantpoint;
-
-        public UInt32 Explosivelv;
-
-        public UInt32 Explosivepoint;
-        public UInt32 Halberdlv;
-        public UInt32 Halberdpoint;
-        public UInt32 Horsebowlv;
-        public UInt32 Horsebowpoint;
-
-        public UInt32 Horseslv,
-            Horsespoint;
-
-        public UInt32 Magiclv,
-            Magicpoint;
-
-        public int Money;
-
-        public string Name, SlotString;
-
-        public bool Slotedited;
-
-        public long StartingOffset;
     }
 }

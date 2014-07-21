@@ -1,15 +1,13 @@
-﻿using BladestormSE.Resources;
-using System.Windows;
+﻿using System.Windows;
+using BladestormSE.Resources;
 
 namespace BladestormSE
 {
     /// <summary>
-    /// Interaction logic for SquadControl.xaml
+    ///     Interaction logic for SquadControl.xaml
     /// </summary>
     public partial class SquadControl
     {
-        public int Points { get; set; }
-
         public SquadControl(Squad squad)
         {
             InitializeComponent();
@@ -22,9 +20,11 @@ namespace BladestormSE
             InitializeComponent();
         }
 
+        public int Points { get; set; }
+
         public int Level
         {
-            get { return (int)Levelbox.Value; }
+            get { return (int) Levelbox.Value; }
             set { Levelbox.Dispatcher.Invoke(delegate { Levelbox.Value = value; }); }
         }
 
@@ -33,10 +33,7 @@ namespace BladestormSE
             get { return SquadName.Content as string; }
             set
             {
-                SquadName.Dispatcher.Invoke(delegate
-                                            {
-                                                SquadName.Content = value;
-                                            }
+                SquadName.Dispatcher.Invoke(delegate { SquadName.Content = value; }
                     );
             }
         }

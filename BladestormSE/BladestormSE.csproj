@@ -81,9 +81,6 @@
     <Compile Include="Resources\SquadControl.xaml.cs">
       <DependentUpon>SquadControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Utilities.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
