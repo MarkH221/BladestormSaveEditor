@@ -1,28 +1,63 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BladestormSE.Resources
 {
-    public class Squad : Utilities.NotificationObject
+    public class Squad
     {
-        private int level, points;
-        public int Level
-        {
-            get { return level; }
-            set { level = value; RaisePropertyChanged(() => Level); }
-        }
-        public int Points
-        {
-            get { return points; }
-            set { points = value; RaisePropertyChanged(() => Points); }
-        }
+        public int Level;
+        public int Points;
         public long Adjust;
     }
 
-    public class Slot : Utilities.NotificationObject 
+    public enum Squaddies
     {
-        public bool Used;
-        public Squad Knives = new Squad();
-        public Squad Rapier = new Squad();
+        Knives,
+        Rapier,
+        Swords,
+        Spears,
+        LongSpears,
+        Horses,
+        Halberds,
+        Axes,
+        Clubs,
+        Bows,
+        HorseBows,
+        Camels,
+        Elephants,
+        Chariots,
+        Explosives,
+        Magic,
+        Engineers
+    }
+
+    public class Slot
+    {
+        public Slot()
+        {
+            Squads.Add(Knives = new Squad { Adjust = 842 });
+            Squads.Add(Rapier = new Squad { Adjust = 926 });
+            Squads.Add(Swords = new Squad { Adjust = 1010 });
+            Squads.Add(Spears = new Squad { Adjust = 1094 });
+            Squads.Add(LongSpears = new Squad { Adjust = 1178 });
+            Squads.Add(Horses = new Squad { Adjust = 1262 });
+            Squads.Add(Halberds = new Squad { Adjust = 1346 });
+            Squads.Add(Axes = new Squad { Adjust = 1430 });
+            Squads.Add(Clubs = new Squad { Adjust = 1514 });
+            Squads.Add(Bows = new Squad { Adjust = 1598 });
+            Squads.Add(HorseBows = new Squad { Adjust = 1682 });
+            Squads.Add(Camels = new Squad { Adjust = 1766 });
+            Squads.Add(Elephants = new Squad { Adjust = 1850 });
+            Squads.Add(Chariots = new Squad { Adjust = 1934 });
+            Squads.Add(Explosives = new Squad { Adjust = 2018 });
+            Squads.Add(Magic = new Squad { Adjust = 2102 });
+            Squads.Add(Engineers = new Squad { Adjust = 2186 });
+        }
+
+        public List<Squad> Squads;
+        public Squad Knives, Rapier, Swords, Spears, LongSpears, Horses, Halberds, Axes, Clubs, Bows, HorseBows, Camels, Elephants, Chariots, Explosives, Magic, Engineers;
+        public int ID;
+
         public UInt32 Bowlv;
 
         public UInt32 Bowpoint;
@@ -50,42 +85,15 @@ namespace BladestormSE.Resources
         public UInt32 Horseslv,
             Horsespoint;
 
-        public int? Knivelv;
-
-        public int? Knivepoint;
-
-        public UInt32 Longspearlv,
-            Longspearpoint;
-
         public UInt32 Magiclv,
             Magicpoint;
 
-        private int money;
-        public int Money
-        {
-            get { return money; }
-            set
-            {
-                money = value;
-                RaisePropertyChanged(() => Money);
-            }
-        }
+        public int Money;
 
         public string Name, SlotString;
 
-        public UInt32 Rapierlv,
-            Rapierpoint;
-
         public bool Slotedited;
 
-        public UInt32 Spearlv,
-            Spearpoint;
-
         public long StartingOffset;
-
-        public UInt32 Swordlv,
-            Swordpoint;
-       
-
     }
 }

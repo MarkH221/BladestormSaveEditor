@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using BladestormSE.Resources;
+﻿using BladestormSE.Resources;
+using System.Windows;
 
 namespace BladestormSE
 {
