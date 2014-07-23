@@ -16,11 +16,12 @@ namespace BladestormSE
     {
         #region Variables
 
-        private List<Slot> Slots = new List<Slot>();
+        private List<Slot> Slots;
         private string _filepath;
         private long _offset;
         private Stfs _stfs;
         private byte[] buffer;
+        private int index = 0;
 
         #endregion Variables
 
@@ -56,7 +57,7 @@ namespace BladestormSE
                 _stfs = new Stfs(_filepath);
                 buffer = _stfs.Extract(0);
                 ReadID();
-                ReadSlots();
+                ScanSlots();
                 SetStatus("Loaded!");
             }
             catch (Exception e)
@@ -65,7 +66,7 @@ namespace BladestormSE
             }
         }
 
-        private void ReadSlots()
+        private void ScanSlots()
         {
             int[] offsets =
             {
@@ -73,7 +74,7 @@ namespace BladestormSE
                 0xE35830,
                 0xE35850
             };
-
+            Slots = new List<Slot>();
             using (var reader = new Reader(buffer, true))
             {
                 var constructor = new StringBuilder();
@@ -94,21 +95,21 @@ namespace BladestormSE
                         constructor.Append(reader.ReadString(StringType.Ascii, 16).Replace("\0", ""));// .Trim(Convert.ToChar("\0")));
                     }
 
-                    //Build List
+                    ////Build List
 
                     //SaveSlot.Items.Add(constructor.ToString());
                     Slots.Add(new Slot
-                             {
-                                 SlotString = constructor.ToString(),
-                                 StartingOffset = 0x44 + (0x79400 * (i + 1)),
-                                 ID = i
-                             });
+                               {
+                                   SlotString = constructor.ToString(),
+                                   StartingOffset = 0x44 + (0x79400 * (i + 1)),
+                                   SlotID = i
+                               });
                     constructor.Clear();
                 }
                 //TODO Add flag for failed load, reset editor state.
                 if (Slots.Count == 0)
                 {
-                    //If no slot is tagged as used, editing is pointless since there's nothing to work with.
+                    //If no slots are used, editing is pointless since there's nothing to work with.
                     MessageBox.Show(
                         "This save appears to be empty!\nIf this save does contain a used slot, an error has occurred.\nEither way, aborting load operation.",
                         "Error!", MessageBoxButton.OK,
@@ -116,40 +117,53 @@ namespace BladestormSE
                     return;
                 }
                 //Load first valid slot
+                SaveSlot.Items.Clear();
+                foreach (var slot in Slots)
+                {
+                    var item = new ComboBoxItem() { Tag = slot.SlotID, Content = slot.SlotString };
+                    SaveSlot.Items.Add(item);
+                }
+                SaveSlot.Items.Refresh();
                 SaveSlot.SelectedIndex = 0;
-                SaveSlot.SelectionChanged += LoadSlot;
+                SaveSlot.SelectionChanged += SetIndex;
+                LoadSlot();
             }
+        }
+
+        private void SetIndex(object o, SelectionChangedEventArgs e)
+        {
+            index = (int)((ComboBoxItem)SaveSlot.SelectedItem).Tag;
+            LoadSlot();
         }
 
         private void ReadSlot()
         {
             using (var reader = new Reader(buffer, true))
             {
-                SetStatus("Reading Slot# " + (SaveSlot.SelectedIndex + 1));
-                _offset = (0x44 + (0x79400 * SaveSlot.SelectedIndex));
+                SetStatus("Reading Slot# " + (index + 1));
+                _offset = (0x44 + (0x79400 * index));
                 try
                 {
                     //Name
                     SetStatus("Reading Name");
                     reader.Position = _offset + 4;
-                    Slots[SaveSlot.SelectedIndex].Name =
+                    Slots[index].Name =
                         reader.ReadString(StringType.Ascii, 16).Trim(Convert.ToChar("\0"));
-                    // Slot[SaveSlot.SelectedIndex].Name = CharName.Text = reader.ReadString(StringType.Ascii, 16).Trim(Convert.ToChar("\0"));
 
                     //Money
                     SetStatus("Reading Money");
                     reader.Position = _offset + 64;
-                    Slots[SaveSlot.SelectedIndex].Money = (int)(MoneyBox.Value = reader.ReadInt32());
+                    Slots[index].Money = reader.ReadUInt32();
 
                     //Squad Reads
                     int counter = 0;
-                    foreach (Squad squad in Slots[SaveSlot.SelectedIndex].Squads)
+                    foreach (Squad squad in Slots[index].Squads)
                     {
                         SetStatus("Reading " + (Squaddies)counter);
                         reader.Position = _offset + squad.Adjust;
                         squad.Level = reader.ReadUInt16();
                         reader.Position += 4;
-                        squad.Points = reader.ReadInt32();
+                        squad.Points = reader.ReadUInt32();
                         counter++;
                     }
                 }
@@ -159,29 +173,30 @@ namespace BladestormSE
                     SetStatus("ERROR!");
                     return;
                 }
-
+                Slots[index].SlotRead = true;
                 SetStatus("Loaded!");
                 reader.Flush();
             }
         }
 
-        private void LoadSlot(object sender, SelectionChangedEventArgs e)
+        private void LoadSlot()
         {
-            ////Save
-            //Slot[SaveSlot.SelectedIndex].Name = CharName.Text;
-            //Slot[SaveSlot.SelectedIndex].Money = MoneyBox.Value;
-            //Slot[SaveSlot.SelectedIndex].Knivelv = knives.Levelbox.Value;
-            //Slot[SaveSlot.SelectedIndex].Knivepoint = knives.PointBox.Value;
-
-            ////Load
-            CharName.Text = Slots[SaveSlot.SelectedIndex].Name;
-            //MoneyBox.Value = Slot[SaveSlot.SelectedIndex].Money;
-            //knives.Levelbox.Value = (int?)Slots[SaveSlot.SelectedIndex].Knivelv;
-            //knives.PointBox.Value = (int?)Slots[SaveSlot.SelectedIndex].Knivepoint;
-            //swords.Levelbox.Value = (int?)Slots[SaveSlot.SelectedIndex].Swordlv;
-            //swords.PointBox.Value = (int?)Slots[SaveSlot.SelectedIndex].Swordpoint;
-
-            MoneyBox.DataContext = Slots[SaveSlot.SelectedIndex].Money;
+            if (!Slots[index].SlotRead)
+            {
+                //If the slot hasn't been loaded into memory, do it.
+                ReadSlot();
+            }
+            var s = Slots[index];
+            CharName.Text = s.Name;
+            MoneyBox.Value = (int?)s.Money;
+            knives.Level = s.Knives.Level;
+            knives.Points = s.Knives.Points;
+            rapiers.Level = s.Rapier.Level;
+            rapiers.Points = s.Rapier.Points;
+            swords.Level = s.Swords.Level;
+            swords.Points = s.Swords.Points;
+            spears.Level = s.Spears.Level;
+            spears.Points = s.Spears.Points;
         }
 
         public void ReadID()
@@ -291,8 +306,6 @@ namespace BladestormSE
 
         #endregion ID Management
 
-        #endregion Utilities
-
         //protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         //{
         //    base.OnMouseLeftButtonDown(e);
@@ -305,5 +318,7 @@ namespace BladestormSE
         {
             OpenFile();
         }
+
+        #endregion Utilities
     }
 }

@@ -6,8 +6,8 @@ namespace BladestormSE.Resources
     public class Squad
     {
         public long Adjust;
-        public int Level;
-        public int Points;
+        public UInt16 Level;
+        public UInt32 Points;
     }
 
     public enum Squaddies
@@ -34,62 +34,34 @@ namespace BladestormSE.Resources
     public class Slot
     {
         public Squad Axes;
-
-        public UInt32 Bowlv;
-
-        public UInt32 Bowpoint;
         public Squad Bows;
-
-        public UInt32 Camellv,
-            Camelpoint;
-
         public Squad Camels;
-
-        public UInt32 Chariotlv,
-            Chariotpoint;
 
         public Squad Chariots;
 
-        public UInt32 Clublv;
-        public UInt32 Clubpoint;
         public Squad Clubs;
-
-        public UInt32 Elephantlv,
-            Elephantpoint;
 
         public Squad Elephants;
         public Squad Engineers;
 
-        public UInt32 Explosivelv;
-
-        public UInt32 Explosivepoint;
         public Squad Explosives;
-        public UInt32 Halberdlv;
-        public UInt32 Halberdpoint;
+
         public Squad Halberds;
         public Squad HorseBows;
-        public UInt32 Horsebowlv;
-        public UInt32 Horsebowpoint;
         public Squad Horses;
 
-        public UInt32 Horseslv,
-            Horsespoint;
-
-        public int ID;
+        public int SlotID;
         public Squad Knives;
         public Squad LongSpears;
         public Squad Magic;
 
-        public UInt32 Magiclv,
-            Magicpoint;
-
-        public int Money;
+        public UInt32 Money;
 
         public string Name;
         public Squad Rapier;
         public string SlotString;
 
-        public bool Slotedited;
+        public bool SlotRead;
         public Squad Spears;
         public List<Squad> Squads;
 
@@ -98,6 +70,7 @@ namespace BladestormSE.Resources
 
         public Slot()
         {
+            Squads = new List<Squad>();
             Squads.Add(Knives = new Squad { Adjust = 842 });
             Squads.Add(Rapier = new Squad { Adjust = 926 });
             Squads.Add(Swords = new Squad { Adjust = 1010 });

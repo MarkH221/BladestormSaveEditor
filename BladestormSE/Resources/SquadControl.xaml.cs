@@ -1,5 +1,6 @@
-﻿using System.Windows;
-using BladestormSE.Resources;
+﻿using BladestormSE.Resources;
+using System;
+using System.Windows;
 
 namespace BladestormSE
 {
@@ -11,8 +12,6 @@ namespace BladestormSE
         public SquadControl(Squad squad)
         {
             InitializeComponent();
-            Levelbox.DataContext = squad.Level;
-            PointBox.DataContext = squad.Points;
         }
 
         public SquadControl()
@@ -20,12 +19,23 @@ namespace BladestormSE
             InitializeComponent();
         }
 
-        public int Points { get; set; }
-
-        public int Level
+        public UInt32 Points
         {
-            get { return (int) Levelbox.Value; }
-            set { Levelbox.Dispatcher.Invoke(delegate { Levelbox.Value = value; }); }
+            get { return (uint)PointBox.Value; }
+            set
+            {
+                PointBox.Dispatcher.Invoke(delegate
+                                           {
+                                               PointBox.Value =
+                                                   value;
+                                           });
+            }
+        }
+
+        public UInt16 Level
+        {
+            get { return (ushort)Levelbox.Value; }
+            set { Levelbox.Dispatcher.Invoke(delegate { Levelbox.Value = (short?)value; }); }
         }
 
         public string Squad
