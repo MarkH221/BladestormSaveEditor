@@ -271,12 +271,8 @@
                     </WrapPanel>
                 </Grid>
             </TabItem>
-            <TabItem Width="57"
-                     Height="20"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Top"
-                     Header="Save IDs">
-                <Grid x:Name="IdGrid" Margin="0,0,1,0">
+            <TabItem Header="Save IDs">
+                <Grid x:Name="IdGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
@@ -393,7 +389,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Save"
-                    ToolTip="Save gamesave." />
+                    ToolTip="Save gamesave." Click="Save" />
             <Button x:Name="ExitButton"
                     Width="44"
                     Margin="325,0,0,0"
