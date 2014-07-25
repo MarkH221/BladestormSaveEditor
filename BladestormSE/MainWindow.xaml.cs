@@ -191,49 +191,115 @@ namespace BladestormSE
             }
             var s = Slots[index];
 
+            //Character
             var nameBind = new Binding("Name") { Source = s, Mode = BindingMode.TwoWay };
             CharName.SetBinding(TextBox.TextProperty, nameBind);
 
-            //CharName.Text = s.Name;
-
+            //Money
             var moneyBind = new Binding("Money") { Source = s, Mode = BindingMode.TwoWay };
             MoneyBox.SetBinding(IntegerUpDown.ValueProperty, moneyBind);
 
-            //MoneyBox.Value = Int32.Parse(s.Money.ToString(CultureInfo.InvariantCulture));
-            knives.Level = s.Knives.Level;
-            knives.Points = s.Knives.Points;
-            rapiers.Level = s.Rapier.Level;
-            rapiers.Points = s.Rapier.Points;
-            swords.Level = s.Swords.Level;
-            swords.Points = s.Swords.Points;
-            spears.Level = s.Spears.Level;
-            spears.Points = s.Spears.Points;
-            longspears.Level = s.LongSpears.Level;
-            longspears.Points = s.LongSpears.Points;
-            horses.Level = s.Horses.Level;
-            horses.Points = s.Horses.Points;
-            halberds.Level = s.Halberds.Level;
-            halberds.Points = s.Halberds.Points;
-            axes.Level = s.Axes.Level;
-            axes.Points = s.Axes.Points;
-            clubs.Level = s.Clubs.Level;
-            clubs.Points = s.Clubs.Points;
-            bows.Level = s.Bows.Level;
-            bows.Points = s.Bows.Points;
-            horsebows.Level = s.HorseBows.Level;
-            horsebows.Points = s.HorseBows.Points;
-            camels.Level = s.Camels.Level;
-            camels.Points = s.Camels.Points;
-            elephants.Level = s.Elephants.Level;
-            elephants.Points = s.Elephants.Points;
-            chariots.Level = s.Chariots.Level;
-            chariots.Points = s.Chariots.Points;
-            explosives.Level = s.Explosives.Level;
-            explosives.Points = s.Explosives.Points;
-            magic.Level = s.Magic.Level;
-            magic.Points = s.Magic.Points;
-            engineers.Level = s.Engineers.Level;
-            engineers.Points = s.Engineers.Points;
+            //Knives
+            var kniveLv = new Binding("Level") { Source = s.Knives, Mode = BindingMode.TwoWay };
+            knives.Levelbox.SetBinding(ShortUpDown.ValueProperty, kniveLv);
+            var knivePoints = new Binding("Points") { Source = s.Knives, Mode = BindingMode.TwoWay };
+            knives.PointBox.SetBinding(LongUpDown.ValueProperty, knivePoints);
+
+            //Rapier
+            var rapierLv = new Binding("Level") { Source = s.Rapier, Mode = BindingMode.TwoWay };
+            rapiers.Levelbox.SetBinding(ShortUpDown.ValueProperty, rapierLv);
+            var rapierPoints = new Binding("Points") { Source = s.Rapier, Mode = BindingMode.TwoWay };
+            rapiers.PointBox.SetBinding(LongUpDown.ValueProperty, rapierPoints);
+
+            //Swords
+            var swordsLv = new Binding("Level") { Source = s.Swords, Mode = BindingMode.TwoWay };
+            swords.Levelbox.SetBinding(ShortUpDown.ValueProperty, swordsLv);
+            var swordsPoints = new Binding("Points") { Source = s.Swords, Mode = BindingMode.TwoWay };
+            swords.PointBox.SetBinding(LongUpDown.ValueProperty, swordsPoints);
+
+            //Spears
+            var spearLv = new Binding("Level") { Source = s.Spears, Mode = BindingMode.TwoWay };
+            spears.Levelbox.SetBinding(ShortUpDown.ValueProperty, spearLv);
+            var spearPoints = new Binding("Points") { Source = s.Spears, Mode = BindingMode.TwoWay };
+            spears.PointBox.SetBinding(LongUpDown.ValueProperty, spearPoints);
+
+            //Long Spears
+            var longspearLv = new Binding("Level") { Source = s.LongSpears, Mode = BindingMode.TwoWay };
+            longspears.Levelbox.SetBinding(ShortUpDown.ValueProperty, longspearLv);
+            var longspearPoints = new Binding("Points") { Source = s.LongSpears, Mode = BindingMode.TwoWay };
+            longspears.PointBox.SetBinding(LongUpDown.ValueProperty, longspearPoints);
+
+            //Horses
+            var hoLv = new Binding("Level") { Source = s.Horses, Mode = BindingMode.TwoWay };
+            horses.Levelbox.SetBinding(ShortUpDown.ValueProperty, hoLv);
+            var hoPoints = new Binding("Points") { Source = s.Horses, Mode = BindingMode.TwoWay };
+            horses.PointBox.SetBinding(LongUpDown.ValueProperty, hoPoints);
+
+            //Halberds
+            var haLv = new Binding("Level") { Source = s.Halberds, Mode = BindingMode.TwoWay };
+            halberds.Levelbox.SetBinding(ShortUpDown.ValueProperty, haLv);
+            var haPoints = new Binding("Points") { Source = s.Halberds, Mode = BindingMode.TwoWay };
+            halberds.PointBox.SetBinding(LongUpDown.ValueProperty, haPoints);
+
+            //Axes
+            var axLv = new Binding("Level") { Source = s.Axes, Mode = BindingMode.TwoWay };
+            axes.Levelbox.SetBinding(ShortUpDown.ValueProperty, axLv);
+            var axPoints = new Binding("Points") { Source = s.Axes, Mode = BindingMode.TwoWay };
+            axes.PointBox.SetBinding(LongUpDown.ValueProperty, axPoints);
+
+            //Clubs
+            var clLv = new Binding("Level") { Source = s.Clubs, Mode = BindingMode.TwoWay };
+            clubs.Levelbox.SetBinding(ShortUpDown.ValueProperty, clLv);
+            var clPoints = new Binding("Points") { Source = s.Clubs, Mode = BindingMode.TwoWay };
+            clubs.PointBox.SetBinding(LongUpDown.ValueProperty, clPoints);
+
+            //Bows
+            var boLv = new Binding("Level") { Source = s.Bows, Mode = BindingMode.TwoWay };
+            bows.Levelbox.SetBinding(ShortUpDown.ValueProperty, boLv);
+            var boPoints = new Binding("Points") { Source = s.Bows, Mode = BindingMode.TwoWay };
+            bows.PointBox.SetBinding(LongUpDown.ValueProperty, boPoints);
+
+            //HorseBows
+            var hbLv = new Binding("Level") { Source = s.HorseBows, Mode = BindingMode.TwoWay };
+            horsebows.Levelbox.SetBinding(ShortUpDown.ValueProperty, hbLv);
+            var hbPoints = new Binding("Points") { Source = s.HorseBows, Mode = BindingMode.TwoWay };
+            horsebows.PointBox.SetBinding(LongUpDown.ValueProperty, hbPoints);
+
+            //Camels
+            var caLv = new Binding("Level") { Source = s.Camels, Mode = BindingMode.TwoWay };
+            camels.Levelbox.SetBinding(ShortUpDown.ValueProperty, caLv);
+            var caPoints = new Binding("Points") { Source = s.Camels, Mode = BindingMode.TwoWay };
+            camels.PointBox.SetBinding(LongUpDown.ValueProperty, caPoints);
+
+            //Elephants
+            var elLv = new Binding("Level") { Source = s.Elephants, Mode = BindingMode.TwoWay };
+            elephants.Levelbox.SetBinding(ShortUpDown.ValueProperty, elLv);
+            var elPoints = new Binding("Points") { Source = s.Elephants, Mode = BindingMode.TwoWay };
+            elephants.PointBox.SetBinding(LongUpDown.ValueProperty, elPoints);
+
+            //Chariots
+            var charLv = new Binding("Level") { Source = s.Chariots, Mode = BindingMode.TwoWay };
+            chariots.Levelbox.SetBinding(ShortUpDown.ValueProperty, charLv);
+            var charPoints = new Binding("Points") { Source = s.Chariots, Mode = BindingMode.TwoWay };
+            chariots.PointBox.SetBinding(LongUpDown.ValueProperty, charPoints);
+
+            //Explosives
+            var exLv = new Binding("Level") { Source = s.Explosives, Mode = BindingMode.TwoWay };
+            explosives.Levelbox.SetBinding(ShortUpDown.ValueProperty, exLv);
+            var exPoints = new Binding("Points") { Source = s.Explosives, Mode = BindingMode.TwoWay };
+            explosives.PointBox.SetBinding(LongUpDown.ValueProperty, exPoints);
+
+            //Magic
+            var magicLv = new Binding("Level") { Source = s.Magic, Mode = BindingMode.TwoWay };
+            magic.Levelbox.SetBinding(ShortUpDown.ValueProperty, magicLv);
+            var magicPoints = new Binding("Points") { Source = s.Magic, Mode = BindingMode.TwoWay };
+            magic.PointBox.SetBinding(LongUpDown.ValueProperty, magicPoints);
+
+            //Engineers
+            var engineerLv = new Binding("Level") { Source = s.Engineers, Mode = BindingMode.TwoWay };
+            engineers.Levelbox.SetBinding(ShortUpDown.ValueProperty, engineerLv);
+            var engineerPoints = new Binding("Points") { Source = s.Engineers, Mode = BindingMode.TwoWay };
+            engineers.PointBox.SetBinding(LongUpDown.ValueProperty, engineerPoints);
         }
 
         public void ReadID()
@@ -308,7 +374,7 @@ namespace BladestormSE
         {
             foreach (CheckBox check in checkwrap.Children.OfType<CheckBox>())
             {
-                //A toggle switch
+                //A toggle switch, why this isnt part of the framework who knows.
                 check.IsChecked = check.IsChecked != true;
             }
         }
@@ -339,6 +405,7 @@ namespace BladestormSE
 
         private void TransferidbtnClick(object sender, RoutedEventArgs e)
         {
+            //TODO Implement this
         }
 
         #endregion ID Management
