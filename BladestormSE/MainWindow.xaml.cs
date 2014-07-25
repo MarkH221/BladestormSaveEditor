@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using Xceed.Wpf.Toolkit;
+using MessageBox = System.Windows.MessageBox;
 
 namespace BladestormSE
 {
@@ -187,8 +190,16 @@ namespace BladestormSE
                 ReadSlot();
             }
             var s = Slots[index];
-            CharName.Text = s.Name;
-            MoneyBox.Value = (int?)s.Money;
+
+            var nameBind = new Binding("Name") { Source = s, Mode = BindingMode.TwoWay };
+            CharName.SetBinding(TextBox.TextProperty, nameBind);
+
+            //CharName.Text = s.Name;
+
+            var moneyBind = new Binding("Money") { Source = s, Mode = BindingMode.TwoWay };
+            MoneyBox.SetBinding(IntegerUpDown.ValueProperty, moneyBind);
+
+            //MoneyBox.Value = Int32.Parse(s.Money.ToString(CultureInfo.InvariantCulture));
             knives.Level = s.Knives.Level;
             knives.Points = s.Knives.Points;
             rapiers.Level = s.Rapier.Level;
@@ -197,6 +208,32 @@ namespace BladestormSE
             swords.Points = s.Swords.Points;
             spears.Level = s.Spears.Level;
             spears.Points = s.Spears.Points;
+            longspears.Level = s.LongSpears.Level;
+            longspears.Points = s.LongSpears.Points;
+            horses.Level = s.Horses.Level;
+            horses.Points = s.Horses.Points;
+            halberds.Level = s.Halberds.Level;
+            halberds.Points = s.Halberds.Points;
+            axes.Level = s.Axes.Level;
+            axes.Points = s.Axes.Points;
+            clubs.Level = s.Clubs.Level;
+            clubs.Points = s.Clubs.Points;
+            bows.Level = s.Bows.Level;
+            bows.Points = s.Bows.Points;
+            horsebows.Level = s.HorseBows.Level;
+            horsebows.Points = s.HorseBows.Points;
+            camels.Level = s.Camels.Level;
+            camels.Points = s.Camels.Points;
+            elephants.Level = s.Elephants.Level;
+            elephants.Points = s.Elephants.Points;
+            chariots.Level = s.Chariots.Level;
+            chariots.Points = s.Chariots.Points;
+            explosives.Level = s.Explosives.Level;
+            explosives.Points = s.Explosives.Points;
+            magic.Level = s.Magic.Level;
+            magic.Points = s.Magic.Points;
+            engineers.Level = s.Engineers.Level;
+            engineers.Points = s.Engineers.Points;
         }
 
         public void ReadID()

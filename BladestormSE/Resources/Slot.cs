@@ -1,13 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BladestormSE.Resources
 {
-    public class Squad
+    public class Squad : INotifyPropertyChanged
     {
         public long Adjust;
-        public UInt16 Level;
-        public UInt32 Points;
+
+        private UInt16 _level;
+
+        private UInt32 _points;
+
+        public UInt16 Level
+        {
+            get { return _level; }
+            set
+            {
+                _level = value;
+                OnPropertyChanged("Level");
+            }
+        }
+
+        public UInt32 Points
+        {
+            get { return _points; }
+            set
+            {
+                _points = value;
+                OnPropertyChanged("Points");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string info)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(info));
+            }
+        }
     }
 
     public enum Squaddies
@@ -31,7 +65,7 @@ namespace BladestormSE.Resources
         Engineers
     }
 
-    public class Slot
+    public class Slot : INotifyPropertyChanged
     {
         public Squad Axes;
         public Squad Bows;
@@ -50,23 +84,22 @@ namespace BladestormSE.Resources
         public Squad HorseBows;
         public Squad Horses;
 
-        public int SlotID;
         public Squad Knives;
         public Squad LongSpears;
         public Squad Magic;
 
-        public UInt32 Money;
-
-        public string Name;
         public Squad Rapier;
-        public string SlotString;
+        public int SlotID;
 
         public bool SlotRead;
+        public string SlotString;
         public Squad Spears;
         public List<Squad> Squads;
 
         public long StartingOffset;
         public Squad Swords;
+        private UInt32 _money;
+        private string _name;
 
         public Slot()
         {
@@ -88,6 +121,37 @@ namespace BladestormSE.Resources
             Squads.Add(Explosives = new Squad { Adjust = 2018 });
             Squads.Add(Magic = new Squad { Adjust = 2102 });
             Squads.Add(Engineers = new Squad { Adjust = 2186 });
+        }
+
+        public UInt32 Money
+        {
+            get { return _money; }
+            set
+            {
+                _money = value;
+                OnPropertyChanged("Money");
+            }
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value.Length > 16 ? value.Substring(0, 16) : value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string info)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(info));
+            }
         }
     }
 }
