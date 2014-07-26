@@ -24,18 +24,18 @@ namespace BladestormSE
             get { return (uint)PointBox.Value; }
             set
             {
-                PointBox.Dispatcher.Invoke(delegate
-                                           {
-                                               PointBox.Value =
-                                                   value;
-                                           });
+                PointBox.Dispatcher.Invoke(new Action(delegate
+                                                 {
+                                                     PointBox.Value =
+                                                         value;
+                                                 }));
             }
         }
 
         public UInt16 Level
         {
             get { return (ushort)Levelbox.Value; }
-            set { Levelbox.Dispatcher.Invoke(delegate { Levelbox.Value = (short?)value; }); }
+            set { Levelbox.Dispatcher.Invoke(new Action(delegate { Levelbox.Value = (short?)value; })); }
         }
 
         public string Squad
@@ -43,7 +43,7 @@ namespace BladestormSE
             get { return SquadName.Content as string; }
             set
             {
-                SquadName.Dispatcher.Invoke(delegate { SquadName.Content = value; }
+                SquadName.Dispatcher.Invoke(new Action(delegate { SquadName.Content = value; })
                     );
             }
         }

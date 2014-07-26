@@ -193,113 +193,293 @@ namespace BladestormSE
             Slot s = Slots[index];
 
             //Character
-            var nameBind = new Binding("Name") { Source = s, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var nameBind = new Binding("Name")
+                           {
+                               Source = s,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             CharName.SetBinding(TextBox.TextProperty, nameBind);
 
             //Money
-            var moneyBind = new Binding("Money") { Source = s, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var moneyBind = new Binding("Money")
+                            {
+                                Source = s,
+                                Mode = BindingMode.TwoWay,
+                                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                            };
             MoneyBox.SetBinding(IntegerUpDown.ValueProperty, moneyBind);
 
             //Knives
-            var kniveLv = new Binding("Level") { Source = s.Knives, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var kniveLv = new Binding("Level")
+                          {
+                              Source = s.Knives,
+                              Mode = BindingMode.TwoWay,
+                              UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                          };
             knives.Levelbox.SetBinding(ShortUpDown.ValueProperty, kniveLv);
-            var knivePoints = new Binding("Points") { Source = s.Knives, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var knivePoints = new Binding("Points")
+                              {
+                                  Source = s.Knives,
+                                  Mode = BindingMode.TwoWay,
+                                  UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                              };
             knives.PointBox.SetBinding(LongUpDown.ValueProperty, knivePoints);
 
             //Rapier
-            var rapierLv = new Binding("Level") { Source = s.Rapier, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var rapierLv = new Binding("Level")
+                           {
+                               Source = s.Rapier,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             rapiers.Levelbox.SetBinding(ShortUpDown.ValueProperty, rapierLv);
-            var rapierPoints = new Binding("Points") { Source = s.Rapier, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var rapierPoints = new Binding("Points")
+                               {
+                                   Source = s.Rapier,
+                                   Mode = BindingMode.TwoWay,
+                                   UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                               };
             rapiers.PointBox.SetBinding(LongUpDown.ValueProperty, rapierPoints);
 
             //Swords
-            var swordsLv = new Binding("Level") { Source = s.Swords, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var swordsLv = new Binding("Level")
+                           {
+                               Source = s.Swords,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             swords.Levelbox.SetBinding(ShortUpDown.ValueProperty, swordsLv);
-            var swordsPoints = new Binding("Points") { Source = s.Swords, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var swordsPoints = new Binding("Points")
+                               {
+                                   Source = s.Swords,
+                                   Mode = BindingMode.TwoWay,
+                                   UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                               };
             swords.PointBox.SetBinding(LongUpDown.ValueProperty, swordsPoints);
 
             //Spears
-            var spearLv = new Binding("Level") { Source = s.Spears, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var spearLv = new Binding("Level")
+                          {
+                              Source = s.Spears,
+                              Mode = BindingMode.TwoWay,
+                              UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                          };
             spears.Levelbox.SetBinding(ShortUpDown.ValueProperty, spearLv);
-            var spearPoints = new Binding("Points") { Source = s.Spears, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var spearPoints = new Binding("Points")
+                              {
+                                  Source = s.Spears,
+                                  Mode = BindingMode.TwoWay,
+                                  UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                              };
             spears.PointBox.SetBinding(LongUpDown.ValueProperty, spearPoints);
 
             //Long Spears
-            var longspearLv = new Binding("Level") { Source = s.LongSpears, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var longspearLv = new Binding("Level")
+                              {
+                                  Source = s.LongSpears,
+                                  Mode = BindingMode.TwoWay,
+                                  UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                              };
             longspears.Levelbox.SetBinding(ShortUpDown.ValueProperty, longspearLv);
-            var longspearPoints = new Binding("Points") { Source = s.LongSpears, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var longspearPoints = new Binding("Points")
+                                  {
+                                      Source = s.LongSpears,
+                                      Mode = BindingMode.TwoWay,
+                                      UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                                  };
             longspears.PointBox.SetBinding(LongUpDown.ValueProperty, longspearPoints);
 
             //Horses
-            var hoLv = new Binding("Level") { Source = s.Horses, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var hoLv = new Binding("Level")
+                       {
+                           Source = s.Horses,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             horses.Levelbox.SetBinding(ShortUpDown.ValueProperty, hoLv);
-            var hoPoints = new Binding("Points") { Source = s.Horses, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var hoPoints = new Binding("Points")
+                           {
+                               Source = s.Horses,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             horses.PointBox.SetBinding(LongUpDown.ValueProperty, hoPoints);
 
             //Halberds
-            var haLv = new Binding("Level") { Source = s.Halberds, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var haLv = new Binding("Level")
+                       {
+                           Source = s.Halberds,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             halberds.Levelbox.SetBinding(ShortUpDown.ValueProperty, haLv);
-            var haPoints = new Binding("Points") { Source = s.Halberds, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var haPoints = new Binding("Points")
+                           {
+                               Source = s.Halberds,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             halberds.PointBox.SetBinding(LongUpDown.ValueProperty, haPoints);
 
             //Axes
-            var axLv = new Binding("Level") { Source = s.Axes, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var axLv = new Binding("Level")
+                       {
+                           Source = s.Axes,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             axes.Levelbox.SetBinding(ShortUpDown.ValueProperty, axLv);
-            var axPoints = new Binding("Points") { Source = s.Axes, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var axPoints = new Binding("Points")
+                           {
+                               Source = s.Axes,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             axes.PointBox.SetBinding(LongUpDown.ValueProperty, axPoints);
 
             //Clubs
-            var clLv = new Binding("Level") { Source = s.Clubs, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var clLv = new Binding("Level")
+                       {
+                           Source = s.Clubs,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             clubs.Levelbox.SetBinding(ShortUpDown.ValueProperty, clLv);
-            var clPoints = new Binding("Points") { Source = s.Clubs, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var clPoints = new Binding("Points")
+                           {
+                               Source = s.Clubs,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             clubs.PointBox.SetBinding(LongUpDown.ValueProperty, clPoints);
 
             //Bows
-            var boLv = new Binding("Level") { Source = s.Bows, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var boLv = new Binding("Level")
+                       {
+                           Source = s.Bows,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             bows.Levelbox.SetBinding(ShortUpDown.ValueProperty, boLv);
-            var boPoints = new Binding("Points") { Source = s.Bows, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var boPoints = new Binding("Points")
+                           {
+                               Source = s.Bows,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             bows.PointBox.SetBinding(LongUpDown.ValueProperty, boPoints);
 
             //HorseBows
-            var hbLv = new Binding("Level") { Source = s.HorseBows, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var hbLv = new Binding("Level")
+                       {
+                           Source = s.HorseBows,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             horsebows.Levelbox.SetBinding(ShortUpDown.ValueProperty, hbLv);
-            var hbPoints = new Binding("Points") { Source = s.HorseBows, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var hbPoints = new Binding("Points")
+                           {
+                               Source = s.HorseBows,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             horsebows.PointBox.SetBinding(LongUpDown.ValueProperty, hbPoints);
 
             //Camels
-            var caLv = new Binding("Level") { Source = s.Camels, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var caLv = new Binding("Level")
+                       {
+                           Source = s.Camels,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             camels.Levelbox.SetBinding(ShortUpDown.ValueProperty, caLv);
-            var caPoints = new Binding("Points") { Source = s.Camels, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var caPoints = new Binding("Points")
+                           {
+                               Source = s.Camels,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             camels.PointBox.SetBinding(LongUpDown.ValueProperty, caPoints);
 
             //Elephants
-            var elLv = new Binding("Level") { Source = s.Elephants, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var elLv = new Binding("Level")
+                       {
+                           Source = s.Elephants,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             elephants.Levelbox.SetBinding(ShortUpDown.ValueProperty, elLv);
-            var elPoints = new Binding("Points") { Source = s.Elephants, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var elPoints = new Binding("Points")
+                           {
+                               Source = s.Elephants,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             elephants.PointBox.SetBinding(LongUpDown.ValueProperty, elPoints);
 
             //Chariots
-            var charLv = new Binding("Level") { Source = s.Chariots, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var charLv = new Binding("Level")
+                         {
+                             Source = s.Chariots,
+                             Mode = BindingMode.TwoWay,
+                             UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                         };
             chariots.Levelbox.SetBinding(ShortUpDown.ValueProperty, charLv);
-            var charPoints = new Binding("Points") { Source = s.Chariots, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var charPoints = new Binding("Points")
+                             {
+                                 Source = s.Chariots,
+                                 Mode = BindingMode.TwoWay,
+                                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                             };
             chariots.PointBox.SetBinding(LongUpDown.ValueProperty, charPoints);
 
             //Explosives
-            var exLv = new Binding("Level") { Source = s.Explosives, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var exLv = new Binding("Level")
+                       {
+                           Source = s.Explosives,
+                           Mode = BindingMode.TwoWay,
+                           UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                       };
             explosives.Levelbox.SetBinding(ShortUpDown.ValueProperty, exLv);
-            var exPoints = new Binding("Points") { Source = s.Explosives, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var exPoints = new Binding("Points")
+                           {
+                               Source = s.Explosives,
+                               Mode = BindingMode.TwoWay,
+                               UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                           };
             explosives.PointBox.SetBinding(LongUpDown.ValueProperty, exPoints);
 
             //Magic
-            var magicLv = new Binding("Level") { Source = s.Magic, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var magicLv = new Binding("Level")
+                          {
+                              Source = s.Magic,
+                              Mode = BindingMode.TwoWay,
+                              UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                          };
             magic.Levelbox.SetBinding(ShortUpDown.ValueProperty, magicLv);
-            var magicPoints = new Binding("Points") { Source = s.Magic, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var magicPoints = new Binding("Points")
+                              {
+                                  Source = s.Magic,
+                                  Mode = BindingMode.TwoWay,
+                                  UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                              };
             magic.PointBox.SetBinding(LongUpDown.ValueProperty, magicPoints);
 
             //Engineers
-            var engineerLv = new Binding("Level") { Source = s.Engineers, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var engineerLv = new Binding("Level")
+                             {
+                                 Source = s.Engineers,
+                                 Mode = BindingMode.TwoWay,
+                                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                             };
             engineers.Levelbox.SetBinding(ShortUpDown.ValueProperty, engineerLv);
-            var engineerPoints = new Binding("Points") { Source = s.Engineers, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+            var engineerPoints = new Binding("Points")
+                                 {
+                                     Source = s.Engineers,
+                                     Mode = BindingMode.TwoWay,
+                                     UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                                 };
             engineers.PointBox.SetBinding(LongUpDown.ValueProperty, engineerPoints);
         }
 
@@ -494,7 +674,7 @@ namespace BladestormSE
                 status.Content = ("Status: " + text);
             else
             {
-                status.Dispatcher.Invoke(delegate { status.Content = ("Status: " + text); });
+                status.Dispatcher.Invoke(new Action(delegate { status.Content = ("Status: " + text); }));
             }
         }
 
