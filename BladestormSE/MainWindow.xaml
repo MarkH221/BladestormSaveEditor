@@ -9,9 +9,10 @@
         Width="486"
         Height="307"
         AllowsTransparency="True"
+        Icon="favicon(2).ico"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        mc:Ignorable="d" Icon="favicon(2).ico">
+        mc:Ignorable="d">
     <Window.Resources>
         <Storyboard x:Key="PulseMesh"
                     AutoReverse="True"
@@ -37,7 +38,7 @@
     <Grid x:Name="MasterGrid" Margin="0,0,0,0">
         <Image x:Name="BG"
                VerticalAlignment="Top"
-               Source="Resources/Images/BG2.png"
+               Source="Resources/Images/BG2.jpg"
                Stretch="Fill" />
         <Image x:Name="Mesh"
                VerticalAlignment="Top"
@@ -367,7 +368,8 @@
                                 HorizontalAlignment="Left"
                                 Click="TransferidbtnClick"
                                 Content="Transfer"
-                                ToolTip="Transfer save to a new profile." />
+                                ToolTip="Transfer save to a new profile."
+                                Visibility="Hidden" />
                     </WrapPanel>
                 </Grid>
             </TabItem>
@@ -388,8 +390,9 @@
                     Margin="5,0,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    Click="Save"
                     Content="Save"
-                    ToolTip="Save gamesave." Click="Save" />
+                    ToolTip="Save gamesave." />
             <Button x:Name="ExitButton"
                     Width="44"
                     Margin="325,0,0,0"
@@ -422,7 +425,7 @@
                      Focusable="True"
                      IsManipulationEnabled="True"
                      MaxLength="16"
-                     TextAlignment="Left"
+                     TextAlignment="Right"
                      TextWrapping="Wrap" />
         </WrapPanel>
         <WrapPanel x:Name="MoneyWrap"

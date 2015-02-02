@@ -42,7 +42,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -54,6 +54,8 @@
   <PropertyGroup>
     <ApplicationIcon>favicon%282%29.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="ISOLib">
       <HintPath>..\..\..\..\Desktop\Code Resources\isolib\ISOLib 2.2\ISOLib.dll</HintPath>
@@ -153,7 +155,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\BG.png" />
     <Resource Include="Resources\Images\mesh.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon%282%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\BG2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
